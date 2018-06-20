@@ -1,0 +1,40 @@
+<div class="col-md-6 col-md-offset-3" id="loginContent">
+  <form #frmLogin="ngForm" id="frmLogin" novalidate (ngSubmit)="onLogin()" class="form-horizontal">
+    <div class="form-group">
+      <div class="col-sm-12 col-sm-offset-3">
+        <h1>Login</h1>
+      </div>
+    </div>
+    <div class="form-group">
+      <ui-input required
+                [dataErrorRequired]="'validations.required.username' | translate"
+                id="username"
+                placeholder="{{'login.placeholders.username' | translate }}"
+                title="{{ 'login.label-username' | translate }}"
+                [mode]="mode"
+                [(ngModel)]="username"
+                [ngModelOptions]="{standalone: true}"
+                [focus]="true">
+      </ui-input>
+    </div>
+    <div class="form-group">
+      <ui-password required
+                   [dataErrorRequired]="'validations.required.password' | translate"
+                   id="password"
+                   placeholder="{{'login.placeholders.password' | translate }}"
+                   title="{{'login.label-password' | translate }}"
+                   [mode]="mode"
+                   [(ngModel)]="password"
+                   [ngModelOptions]="{standalone: true}">
+      </ui-password>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-9 pull-right">
+        <button id="btnLogin" type="submit" [disabled]="!isLoginEnable()" class="btn btn-primary">
+          {{ 'login.button-login' | translate }}
+        </button>
+        <img alt="Loading ..." *ngIf="loading" src="./assets/images/spinner2.gif"/>
+      </div>
+    </div>
+  </form>
+</div>
